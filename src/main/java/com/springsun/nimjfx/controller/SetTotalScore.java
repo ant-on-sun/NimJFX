@@ -67,7 +67,7 @@ public class SetTotalScore {
         try (BufferedWriter writer = Files.newBufferedWriter(path)){
             writer.write(stringBuilder.toString());
 //            writer.write( Players.HUMAN.toString() + ": 0\n" + Players.COMPUTER.toString() + ": 0\n" +
-//                    Players.MAD_COMPUTER.toString() + ": 0\n");
+//                   Players.MAD_COMPUTER.toString() + ": 0\n");
         } catch (IOException e) {
             log.log(Level.SEVERE, "Exception caught in SetTotalScore at try-with-resources (writing in file): ", e);
         }

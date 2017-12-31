@@ -5,18 +5,21 @@ import com.springsun.nimjfx.model.ListOfHeaps;
 import com.springsun.nimjfx.model.ListOfPlayers;
 import com.springsun.nimjfx.model.Players;
 import com.springsun.nimjfx.view.IView;
+import javafx.animation.PauseTransition;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -24,6 +27,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,6 +46,7 @@ public class MainSceneController {
     private ObservableList<Integer> listOfHeapsObservableList;
     private ObservableList<Players> listOfPlayersObservableList;
     private ObservableList<String> listOfMessages = FXCollections.observableArrayList();
+    private ObservableList<Integer> listX = FXCollections.observableArrayList(0);
     private IView v;
 
     private ListOfHeaps listOfHeaps;
@@ -51,6 +57,9 @@ public class MainSceneController {
     private ImageView[] heapImagesList;
     private Players player;
     private MediaPlayer mediaPlayer;
+    private IntegerProperty x = new SimpleIntegerProperty(3);
+
+    //private Label medilable = new Label();
 
     @FXML
     private AnchorPane rootPane;
@@ -177,12 +186,12 @@ public class MainSceneController {
                     makeMoveButton.setDisable(true);
                     switch (player) {
                         case COMPUTER:
-                            message.setText(listOfMessages.get(1));
-    //                        try {
-    //                            Thread.sleep(500);
-    //                        } catch (InterruptedException e) {
-    //                            e.printStackTrace();
-    //                        }
+                            MessageShow.showText(message, listOfMessages.get(1));
+                            try {
+                                Thread.sleep(700);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                             moveComputer(listOfHeaps);
                             if (!ViktoryCondition.nobodyHasWonYet(listOfHeaps.getListOfHeaps())) {
                                 v.setWinnerName(Players.COMPUTER.toString());
@@ -192,7 +201,12 @@ public class MainSceneController {
                             }
                             break;
                         case MAD_COMPUTER:
-                            message.setText(listOfMessages.get(2));
+                            MessageShow.showText(message, listOfMessages.get(2));
+                            try {
+                                Thread.sleep(700);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                             moveMadComputer(listOfHeaps);
                             if (!ViktoryCondition.nobodyHasWonYet(listOfHeaps.getListOfHeaps())) {
                                 v.setWinnerName(Players.MAD_COMPUTER.toString());
@@ -211,7 +225,7 @@ public class MainSceneController {
                     }
                     player = listOfPlayers.getPlayers().get(counter);
                 }
-                message.setText(listOfMessages.get(0));
+                MessageShow.showText(message, listOfMessages.get(0));
             }
         } catch (IndexOutOfBoundsException e) {
             log.log(Level.SEVERE, "Exception caught in MainSceneController makeMoveHandler(): ", e);

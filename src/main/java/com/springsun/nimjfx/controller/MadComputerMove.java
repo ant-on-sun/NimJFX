@@ -11,11 +11,6 @@ public class MadComputerMove {
 
     public static void moveMadComputer(ListOfHeaps h) {
         ObservableList<Integer> heaps = h.getListOfHeaps();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         int randomNumHeap;
         do {
             randomNumHeap = ThreadLocalRandom.current().nextInt(0, heaps.size());

@@ -17,12 +17,6 @@
                     <exclude>**/*.java</exclude>
                 </excludes>
             </resource>
-            <resource>
-                <directory>src/main/properties</directory>
-                <includes>
-                    <include>**/*.properties</include>
-                </includes>
-            </resource>
 
         </resources>
 
@@ -38,7 +32,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${basedir}/target/extra-resources</outputDirectory>
+                            <outputDirectory>${basedir}/target/generated-sources</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>src/main/java</directory>
