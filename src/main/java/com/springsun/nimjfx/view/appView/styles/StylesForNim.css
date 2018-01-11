@@ -60,7 +60,25 @@
     -fx-background-radius: 4;
 }
 
-.opponent-box {
+.opponent-box1 {
+    -fx-font-family: serif;
+    -fx-font-size: 9pt;
+    -fx-color: chartreuse;
+}
+
+.opponent-box2 {
+    -fx-font-family: serif;
+    -fx-font-size: 9pt;
+    -fx-color: chartreuse;
+}
+
+.opponent-box3 {
+    -fx-font-family: serif;
+    -fx-font-size: 9pt;
+    -fx-color: chartreuse;
+}
+
+.opponent-box4 {
     -fx-font-family: serif;
     -fx-font-size: 9pt;
     -fx-color: chartreuse;
