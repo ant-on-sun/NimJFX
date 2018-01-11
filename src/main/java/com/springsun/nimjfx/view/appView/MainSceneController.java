@@ -5,16 +5,10 @@ import com.springsun.nimjfx.model.ListOfHeaps;
 import com.springsun.nimjfx.model.ListOfPlayers;
 import com.springsun.nimjfx.model.Players;
 import com.springsun.nimjfx.view.IView;
-import javafx.animation.PauseTransition;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,8 +21,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -43,10 +35,10 @@ import static com.springsun.nimjfx.model.Players.HUMAN;
 
 public class MainSceneController {
     private static Logger log = Logger.getLogger(MainSceneController.class.getName());
+    private static AnchorPane pane;
     private ObservableList<Integer> listOfHeapsObservableList;
     private ObservableList<Players> listOfPlayersObservableList;
     private ObservableList<String> listOfMessages = FXCollections.observableArrayList();
-    private ObservableList<Integer> listX = FXCollections.observableArrayList(0);
     private IView v;
 
     private ListOfHeaps listOfHeaps;
@@ -57,9 +49,6 @@ public class MainSceneController {
     private ImageView[] heapImagesList;
     private Players player;
     private MediaPlayer mediaPlayer;
-    private IntegerProperty x = new SimpleIntegerProperty(3);
-
-    //private Label medilable = new Label();
 
     @FXML
     private AnchorPane rootPane;
@@ -112,6 +101,7 @@ public class MainSceneController {
             listOfHeapsObservableList = listOfHeaps.getListOfHeaps();
             listOfPlayersObservableList = listOfPlayers.getPlayers();
             fillListOfMessages();
+            pane = rootPane;
             message.setText(listOfMessages.get(0));
             comboBoxList.add(0, comboBox1);
             comboBoxList.add(1, comboBox2);
@@ -126,6 +116,9 @@ public class MainSceneController {
             imagesSet(listOfHeapsObservableList);
             makeMoveButton.setDisable(true);
             counter = 0;
+
+            /*This listener changes values of ComboBoxes items, images and numbers (at labels) depending on the changes
+            that take place in listOfHeaps at every move. Also it plays sound of stones at every move.*/
             listOfHeapsObservableList.addListener((ListChangeListener<? super Integer>) observable -> {
                 boxSet(listOfHeapsObservableList);
                 labelSet(listOfHeapsObservableList);
@@ -135,6 +128,9 @@ public class MainSceneController {
                 mediaPlayer.play();
             });
 
+            /*This verifies that before button 'Make Move' will be pressed, at least one stone from
+            non-empty heap will have been chosen and that player have chosen stones from only one heap (not more)
+             */
             for (int i = 0; i < comboBoxList.size(); i++) {
                 int j = i;
                 comboBoxList.get(i).setOnAction(event -> {
@@ -313,6 +309,10 @@ public class MainSceneController {
 
     public AnchorPane getRootPane() {
         return rootPane;
+    }
+
+    public static AnchorPane getPane(){
+        return pane;
     }
 
     private void fillListOfMessages() {

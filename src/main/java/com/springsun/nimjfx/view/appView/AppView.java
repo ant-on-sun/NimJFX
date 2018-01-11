@@ -30,7 +30,6 @@ public class AppView implements IView {
 
     @Override
     public void getInitialConditions() {
-
     }
 
     @Override
@@ -56,7 +55,6 @@ public class AppView implements IView {
 
     @Override
     public void showCurrentStateOfHeaps(ListOfHeaps h) {
-
     }
 
     @Override
@@ -65,7 +63,6 @@ public class AppView implements IView {
 
     @Override
     public void showMessage(String player) {
-
     }
 
     @Override

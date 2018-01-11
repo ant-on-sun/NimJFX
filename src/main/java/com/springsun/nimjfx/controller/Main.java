@@ -21,7 +21,8 @@ import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 public class Main extends Application {
-    private Stage primaryStage;
+
+    private static Stage primaryStage;
     private static Logger log = Logger.getLogger(Main.class.getName());
 
     @Override
@@ -72,4 +73,9 @@ public class Main extends Application {
             log.log(Level.SEVERE, "Exception caught in Main: ", e);
         }
     }
+
+    public static Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
 }
