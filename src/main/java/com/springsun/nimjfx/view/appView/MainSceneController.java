@@ -49,6 +49,7 @@ public class MainSceneController {
     private ImageView[] heapImagesList;
     private Players player;
     private MediaPlayer mediaPlayer;
+    private Media soundFile;
 
     @FXML
     private AnchorPane rootPane;
@@ -111,8 +112,7 @@ public class MainSceneController {
             heapImagesList = new ImageView[]{picture1, picture2, picture3, picture4};
             boxSet(listOfHeapsObservableList);
             labelSet(listOfHeapsObservableList);
-            URL url = MainSceneController.class.getResource("media/sounds/soundOfStones.mp3");
-            Media soundFile = new Media(url.toString());
+            setSoundFile();
             imagesSet(listOfHeapsObservableList);
             makeMoveButton.setDisable(true);
             counter = 0;
@@ -160,69 +160,7 @@ public class MainSceneController {
     @FXML
     private void makeMoveHandler(ActionEvent actionEvent){
         try {
-            mark:
-            {
-                for (int i = 0; i < comboBoxList.size(); i++) {
-                    if ((int) comboBoxList.get(i).getValue() > 0) {
-                        numberOfHeap = i;
-                        numberOfStones = listOfHeapsObservableList.get(i) - (int) comboBoxList.get(i).getValue();
-                    }
-                }
-                listOfHeapsObservableList.set(numberOfHeap, numberOfStones);
-                if (!ViktoryCondition.nobodyHasWonYet(listOfHeaps.getListOfHeaps())) {
-                    v.setWinnerName(Players.HUMAN.toString());
-                    v.setEnumWinner(Players.HUMAN);
-                    v.winnerAnnouncement(DefinePlayer.definePlayer(listOfPlayers, counter), rootPane);
-                    break mark;
-                }
-                counter++;
-                player = listOfPlayers.getPlayers().get(counter);
-                while (player != HUMAN) {
-
-                    makeMoveButton.setDisable(true);
-                    switch (player) {
-                        case COMPUTER:
-                            MessageShow.showText(message, listOfMessages.get(1));
-                            try {
-                                Thread.sleep(700);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            moveComputer(listOfHeaps);
-                            if (!ViktoryCondition.nobodyHasWonYet(listOfHeaps.getListOfHeaps())) {
-                                v.setWinnerName(Players.COMPUTER.toString());
-                                v.setEnumWinner(Players.COMPUTER);
-                                v.winnerAnnouncement(DefinePlayer.definePlayer(listOfPlayers, counter), rootPane);
-                                break mark;
-                            }
-                            break;
-                        case MAD_COMPUTER:
-                            MessageShow.showText(message, listOfMessages.get(2));
-                            try {
-                                Thread.sleep(700);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            moveMadComputer(listOfHeaps);
-                            if (!ViktoryCondition.nobodyHasWonYet(listOfHeaps.getListOfHeaps())) {
-                                v.setWinnerName(Players.MAD_COMPUTER.toString());
-                                v.setEnumWinner(Players.MAD_COMPUTER);
-                                v.winnerAnnouncement(DefinePlayer.definePlayer(listOfPlayers, counter), rootPane);
-                                break mark;
-                            }
-                            break;
-                        default:
-                            log.severe("No matches in method makeMove");
-                            break;
-                    }
-                    counter++;
-                    if (counter == listOfPlayers.getPlayers().size()) {
-                        counter = 0;
-                    }
-                    player = listOfPlayers.getPlayers().get(counter);
-                }
-                MessageShow.showText(message, listOfMessages.get(0));
-            }
+            basicLogicOfTheGame();
         } catch (IndexOutOfBoundsException e) {
             log.log(Level.SEVERE, "Exception caught in MainSceneController makeMoveHandler(): ", e);
         } catch (NullPointerException e) {
@@ -278,6 +216,79 @@ public class MainSceneController {
         }
     }
 
+    void basicLogicOfTheGame() throws IndexOutOfBoundsException, NullPointerException {
+        mark:
+        {
+            humanChoice();
+            if (!ViktoryCondition.nobodyHasWonYet(listOfHeaps.getListOfHeaps())) {
+                v.setWinnerName(Players.HUMAN.toString());
+                v.setEnumWinner(Players.HUMAN);
+                v.winnerAnnouncement(DefinePlayer.definePlayer(listOfPlayers, counter), rootPane);
+                break mark;
+            }
+            counter++;
+            player = listOfPlayers.getPlayers().get(counter);
+            while (player != HUMAN) {
+
+                makeMoveButton.setDisable(true);
+                switch (player) {
+
+                    case COMPUTER:
+                        MessageShow.showText(message, listOfMessages.get(1));
+                        try {
+                            Thread.sleep(700);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        moveComputer(listOfHeaps);
+                        if (!ViktoryCondition.nobodyHasWonYet(listOfHeaps.getListOfHeaps())) {
+                            v.setWinnerName(Players.COMPUTER.toString());
+                            v.setEnumWinner(Players.COMPUTER);
+                            v.winnerAnnouncement(DefinePlayer.definePlayer(listOfPlayers, counter), rootPane);
+                            break mark;
+                        }
+                        break;
+
+                    case MAD_COMPUTER:
+                        MessageShow.showText(message, listOfMessages.get(2));
+                        try {
+                            Thread.sleep(700);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        moveMadComputer(listOfHeaps);
+                        if (!ViktoryCondition.nobodyHasWonYet(listOfHeaps.getListOfHeaps())) {
+                            v.setWinnerName(Players.MAD_COMPUTER.toString());
+                            v.setEnumWinner(Players.MAD_COMPUTER);
+                            v.winnerAnnouncement(DefinePlayer.definePlayer(listOfPlayers, counter), rootPane);
+                            break mark;
+                        }
+                        break;
+
+                    default:
+                        log.severe("No matches in method basicLogicOfTheGame");
+                        break;
+                }
+                counter++;
+                if (counter == listOfPlayers.getPlayers().size()) {
+                    counter = 0;
+                }
+                player = listOfPlayers.getPlayers().get(counter);
+            }
+            MessageShow.showText(message, listOfMessages.get(0));
+        }
+    }
+
+    private void humanChoice(){
+        for (int i = 0; i < comboBoxList.size(); i++) {
+            if ((int) comboBoxList.get(i).getValue() > 0) {
+                numberOfHeap = i;
+                numberOfStones = listOfHeapsObservableList.get(i) - (int) comboBoxList.get(i).getValue();
+            }
+        }
+        listOfHeapsObservableList.set(numberOfHeap, numberOfStones);
+    }
+
     private void boxSet(ObservableList<Integer> listOfHeapsObservableList){
         Iterator<ComboBox<Integer>> it = comboBoxList.iterator();
         int i = 0;
@@ -305,6 +316,11 @@ public class MainSceneController {
             pathAsString = url.toString();
             heapImagesList[i].setImage(new Image(pathAsString));
         }
+    }
+
+    private void setSoundFile(){
+        URL url = MainSceneController.class.getResource("media/sounds/soundOfStones.mp3");
+        soundFile = new Media(url.toString());
     }
 
     public AnchorPane getRootPane() {
