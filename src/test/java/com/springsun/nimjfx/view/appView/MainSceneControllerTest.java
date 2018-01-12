@@ -9,6 +9,7 @@ import com.springsun.nimjfx.view.IView;
 import javafx.stage.Stage;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
@@ -26,6 +27,17 @@ import static org.mockito.Mockito.verify;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ComputerMove.class, MadComputerMove.class})
 public class MainSceneControllerTest extends ApplicationTest {
+    @BeforeClass
+    public static void setUpSpec() throws Exception {
+        if (Boolean.getBoolean("headless")){
+            System.setProperty("testfx.robot", "glass");
+            System.setProperty("testfx.headless", "true");
+            System.setProperty("prism.order", "sw");
+            System.setProperty("prism.text", "t2k");
+            System.setProperty("java.awt.headless", "true");
+        }
+    }
+
     ListOfHeaps h;
     ListOfPlayers p;
     IView vmock;
