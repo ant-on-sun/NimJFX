@@ -3,10 +3,7 @@ package com.springsun.nimjfx.controller;
 import com.springsun.nimjfx.view.appView.MainSceneController;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit.ApplicationTest;
 
@@ -37,7 +34,7 @@ public class MessageShowTest extends ApplicationTest{
     public void tearDown() throws Exception {
     }
 
-    @Test
+    @Test @Ignore
     public void showTextTest1() throws Exception {
         Stage stage = Main.getPrimaryStage();
         Label label;

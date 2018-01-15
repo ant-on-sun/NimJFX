@@ -118,7 +118,7 @@ public class FirstSceneController {
             v.setNumberOfStones(numberOfStones);
             listOfHeaps = v.createHeaps();
             listOfPlayers = v.createPlayers();
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/MainScene.fxml"));
             rootPane.getChildren().setAll(pane);
         } catch (Exception e) {
             log.log(Level.SEVERE, "Exception caught in FirstSceneController startHandler(): ", e);
@@ -128,7 +128,7 @@ public class FirstSceneController {
     @FXML
     private void exitHandler(ActionEvent actionEvent){
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NoticeExitInTheEnd.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/NoticeExitInTheEnd.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.WINDOW_MODAL);
@@ -142,12 +142,12 @@ public class FirstSceneController {
     }
 
     private void setImageComp(){
-        URL url = MainSceneController.class.getResource("media/images/architector.jpg");
+        URL url = MainSceneController.class.getResource("/media/images/architector.jpg");
         comp.setImage(new Image(url.toString()));
     }
 
     private void setImageMad(){
-        URL url = MainSceneController.class.getResource("media/images/bender.jpg");
+        URL url = MainSceneController.class.getResource("/media/images/bender.jpg");
         madcomp.setImage(new Image(url.toString()));
     }
 

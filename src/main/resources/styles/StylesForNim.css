@@ -1,0 +1,135 @@
+.background-one {
+    -fx-background-image: url(/media/images/grapeleaves.jpg);
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
+
+.background-two {
+    -fx-background-image: url(/media/images/autumnleaves.jpg);
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
+
+.background-three {
+    -fx-background-image: url(/media/images/mushroom.jpg);
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
+
+.lable-text-one {
+    -fx-font-family: serif;
+    -fx-font-size: 12pt;
+    -fx-color: #8b4513;
+    -fx-font-style: italic;
+    -fx-font-weight: bold;
+}
+
+.lable-text-two {
+    -fx-font-family: serif;
+}
+
+.lable-text-three {
+    -fx-font-family: serif;
+    -fx-font-size: 14pt;
+    -fx-text-fill: white;
+    -fx-font-style: italic;
+    -fx-font-weight: bold;
+}
+
+.lable-text-four {
+    -fx-font-family: serif;
+    -fx-font-size: 14pt;
+    -fx-text-fill: black;
+    -fx-font-style: italic;
+    -fx-font-weight: bold;
+}
+
+.lable-text-five {
+    -fx-font-family: serif;
+    -fx-font-size: 14pt;
+}
+
+.start-button {
+    -fx-font-family: serif;
+    -fx-font-size: 9pt;
+    -fx-text-fill: gold;
+    -fx-background-color: linear-gradient(lawngreen, darkgreen);
+    -fx-background-radius: 4;
+}
+
+.opponent-box1 {
+    -fx-font-family: serif;
+    -fx-font-size: 9pt;
+    -fx-color: chartreuse;
+}
+
+.opponent-box2 {
+    -fx-font-family: serif;
+    -fx-font-size: 9pt;
+    -fx-color: chartreuse;
+}
+
+.opponent-box3 {
+    -fx-font-family: serif;
+    -fx-font-size: 9pt;
+    -fx-color: chartreuse;
+}
+
+.opponent-box4 {
+    -fx-font-family: serif;
+    -fx-font-size: 9pt;
+    -fx-color: chartreuse;
+}
+
+.exit-button {
+    -fx-font-family: serif;
+    -fx-font-size: 9pt;
+    -fx-color: darkgreen;
+    -fx-text-fill: black;
+}
+
+.yes-button {
+    -fx-font-family: serif;
+    -fx-font-size: 9pt;
+    -fx-color: sandybrown;
+    -fx-text-fill: black;
+}
+
+.no-button {
+    -fx-font-family: serif;
+    -fx-font-size: 9pt;
+    -fx-color: silver;
+    -fx-text-fill: black;
+}
+.ok-button {
+    -fx-font-family: serif;
+    -fx-font-size: 9pt;
+    -fx-text-fill: black;
+    -fx-background-color: linear-gradient(moccasin, sandybrown);
+    -fx-background-radius: 4;
+}
+
+.move-button {
+    -fx-font-family: serif;
+    -fx-font-size: 12pt;
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(lawngreen, darkgreen);
+    -fx-background-radius: 6;
+}
+
+.newgame-button {
+    -fx-font-family: serif;
+    -fx-font-size: 9pt;
+    -fx-color: lawngreen;
+    -fx-text-fill: black;
+}
+
+.statistics-button {
+    -fx-font-family: serif;
+    -fx-font-size: 9pt;
+    -fx-color: forestgreen;
+    -fx-text-fill: black;
+}

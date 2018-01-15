@@ -43,7 +43,7 @@ public class NoticeNewGameController {
             AnchorPane pane = null;
             Stage stage = (Stage) yesButton.getScene().getWindow();
             AnchorPane rootPane = (AnchorPane) stage.getOwner().getScene().getRoot();
-            pane = FXMLLoader.load(getClass().getResource("FirstScene.fxml"));
+            pane = FXMLLoader.load(getClass().getResource("/fxml/FirstScene.fxml"));
             rootPane.getChildren().setAll(pane);
             stage.close();
         } catch (IOException e) {

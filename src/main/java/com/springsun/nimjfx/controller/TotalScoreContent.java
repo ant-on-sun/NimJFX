@@ -24,7 +24,7 @@ public class TotalScoreContent {
         URL url = null;
         File file = null;
         try {
-            url = TotalScoreContent.class.getResource("../TotalScore.txt");
+            url = TotalScoreContent.class.getResource("/TotalScore.txt");
             String pathAsString = GetOsIndependentPathToFile.getPath(url.toString());
             file = new File(pathAsString);
             if (!file.exists()) {

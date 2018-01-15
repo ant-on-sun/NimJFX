@@ -7,10 +7,7 @@ import com.springsun.nimjfx.model.ListOfHeaps;
 import com.springsun.nimjfx.model.ListOfPlayers;
 import com.springsun.nimjfx.view.IView;
 import javafx.stage.Stage;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
@@ -61,7 +58,7 @@ public class MainSceneControllerTest extends ApplicationTest {
         vmock = null;
     }
 
-    @Test
+    @Test @Ignore
     public void basicLogicOfTheGameTest1() throws Exception {
         clickOn(stage.getScene().lookup(".start-button"));
         h = getListOfHeaps();
@@ -74,7 +71,7 @@ public class MainSceneControllerTest extends ApplicationTest {
         MadComputerMove.moveMadComputer(h);
     }
 
-    @Test
+    @Test @Ignore
     public void basicLogicOfTheGameTest2() throws Exception {
         clickOn(stage.getScene().lookup(".opponent-box2")).clickOn("1");
         clickOn(stage.getScene().lookup(".opponent-box1")).clickOn("0");

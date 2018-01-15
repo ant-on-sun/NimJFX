@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="450.0" minWidth="600.0" prefHeight="500.0" prefWidth="700.0" styleClass="background-one" stylesheets="@/styles/StylesForNim.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.springsun.nimjfx.view.appView.FirstSceneController">
+   <padding>
+      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+   </padding>
+   <children>
+      <GridPane layoutX="26.0" layoutY="216.0" prefHeight="60.0" prefWidth="652.0" AnchorPane.bottomAnchor="182.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ChoiceBox fx:id="choiceBoxComp" prefHeight="25.0" prefWidth="50.0" styleClass="opponent-box1" stylesheets="@/styles/StylesForNim.css" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="100.0" left="140.0" right="140.0" top="100.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+            <ChoiceBox fx:id="choiceBoxMadComp" prefWidth="50.0" styleClass="opponent-box2" stylesheets="@/styles/StylesForNim.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="100.0" left="140.0" right="140.0" top="100.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+            <Label fx:id="QtyComp" alignment="CENTER" prefHeight="29.0" prefWidth="325.0" styleClass="lable-text-two" stylesheets="@/styles/StylesForNim.css" text="Qty Comp" />
+            <Label fx:id="QtyMadComp" alignment="CENTER" prefHeight="31.0" prefWidth="333.0" styleClass="lable-text-two" stylesheets="@/styles/StylesForNim.css" text="Qty Mad Comp" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+      <ButtonBar buttonMinWidth="120.0" layoutX="267.0" layoutY="315.0" prefHeight="68.0" prefWidth="150.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="1500.0" AnchorPane.rightAnchor="1500.0">
+        <buttons>
+          <Button fx:id="start" minHeight="60.0" minWidth="120.0" mnemonicParsing="false" onAction="#startHandler" styleClass="start-button" stylesheets="@/styles/StylesForNim.css" text="START NIM GAME" />
+        </buttons>
+      </ButtonBar>
+      <ButtonBar layoutX="599.0" layoutY="446.0" prefHeight="40.0" prefWidth="87.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+        <buttons>
+          <Button fx:id="exit" mnemonicParsing="false" onAction="#exitHandler" styleClass="exit-button" stylesheets="@/styles/StylesForNim.css" text="Exit" />
+        </buttons>
+      </ButtonBar>
+      <Label fx:id="rules" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="14.0" prefHeight="107.0" prefWidth="676.0" styleClass="lable-text-one" stylesheets="@/styles/StylesForNim.css" text="Rules" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0" />
+      <ImageView fx:id="comp" fitHeight="107.0" fitWidth="153.0" layoutX="113.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="250.0" />
+      <ImageView fx:id="madcomp" fitHeight="107.0" fitWidth="141.0" layoutX="435.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="250.0" />
+   </children>
+</AnchorPane>

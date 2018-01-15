@@ -37,7 +37,6 @@ public class MainSceneController {
     private static Logger log = Logger.getLogger(MainSceneController.class.getName());
     private static AnchorPane pane;
     private ObservableList<Integer> listOfHeapsObservableList;
-    private ObservableList<Players> listOfPlayersObservableList;
     private ObservableList<String> listOfMessages = FXCollections.observableArrayList();
     private IView v;
 
@@ -100,7 +99,6 @@ public class MainSceneController {
             listOfPlayers = FirstSceneController.getListOfPlayers();
             v = FirstSceneController.getV();
             listOfHeapsObservableList = listOfHeaps.getListOfHeaps();
-            listOfPlayersObservableList = listOfPlayers.getPlayers();
             fillListOfMessages();
             pane = rootPane;
             message.setText(listOfMessages.get(0));
@@ -171,7 +169,7 @@ public class MainSceneController {
     @FXML
     private void newGameHandler(ActionEvent actionEvent){
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NoticeNewGame.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/NoticeNewGame.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.WINDOW_MODAL);
@@ -187,7 +185,7 @@ public class MainSceneController {
     @FXML
     private void showStatisticsHandler(ActionEvent actionEvent){
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ShowStatistics.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/ShowStatistics.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.WINDOW_MODAL);
@@ -203,7 +201,7 @@ public class MainSceneController {
     @FXML
     private void exitHandler(ActionEvent actionEvent){
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Notice.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Notice.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.WINDOW_MODAL);
@@ -312,14 +310,14 @@ public class MainSceneController {
         String pathAsString;
         for (int i = 0; i < heapImagesList.length; i++){
             stones = listOfHeapsObservableList.get(i);
-            URL url = MainSceneController.class.getResource("media/images/image-" + stones + ".jpg");
+            URL url = MainSceneController.class.getResource("/media/images/image-" + stones + ".jpg");
             pathAsString = url.toString();
             heapImagesList[i].setImage(new Image(pathAsString));
         }
     }
 
     private void setSoundFile(){
-        URL url = MainSceneController.class.getResource("media/sounds/soundOfStones.mp3");
+        URL url = MainSceneController.class.getResource("/media/sounds/soundOfStones.mp3");
         soundFile = new Media(url.toString());
     }
 

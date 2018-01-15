@@ -72,7 +72,7 @@ public class LastSceneController {
     @FXML
     private void exitHandler(ActionEvent actionEvent){
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NoticeExitInTheEnd.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/NoticeExitInTheEnd.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.WINDOW_MODAL);
@@ -90,7 +90,7 @@ public class LastSceneController {
         AnchorPane pane = null;
         mediaPlayer.stop();
         try {
-            pane = FXMLLoader.load(getClass().getResource("FirstScene.fxml"));
+            pane = FXMLLoader.load(getClass().getResource("/fxml/FirstScene.fxml"));
         } catch (IOException e) {
             log.log(Level.SEVERE, "Exception caught in LastSceneController newGameHandler(): ", e);
         }
@@ -101,13 +101,16 @@ public class LastSceneController {
         URL url = null;
         switch (winnerEnum){
             case HUMAN:
-                url = LastSceneController.class.getResource("media/gifs/salut.gif");
+                url = LastSceneController.class.getResource("/media/gifs/salut.gif");
+                System.out.println(url.toString());
                 break;
             case COMPUTER:
-                url = LastSceneController.class.getResource("media/gifs/computer.gif");
+                url = LastSceneController.class.getResource("/media/gifs/computer.gif");
+                System.out.println(url.toString());
                 break;
             case MAD_COMPUTER:
-                url = LastSceneController.class.getResource("media/gifs/madcomp.gif");
+                url = LastSceneController.class.getResource("/media/gifs/madcomp.gif");
+                System.out.println(url.toString());
                 break;
             default:
                 log.severe("No matches in LastSceneController method pathToGifToShow()");
@@ -121,13 +124,16 @@ public class LastSceneController {
         URL url = null;
         switch (winnerEnum){
             case HUMAN:
-                url = LastSceneController.class.getResource("media/sounds/fireworks.mp3");
+                url = LastSceneController.class.getResource("/media/sounds/fireworks.mp3");
+                System.out.println(url.toString());
                 break;
             case COMPUTER:
-                url = LastSceneController.class.getResource("media/sounds/computer.mp3");
+                url = LastSceneController.class.getResource("/media/sounds/computer.mp3");
+                System.out.println(url.toString());
                 break;
             case MAD_COMPUTER:
-                url = LastSceneController.class.getResource("media/sounds/IrishDance.mp3");
+                url = LastSceneController.class.getResource("/media/sounds/IrishDance.mp3");
+                System.out.println(url.toString());
                 break;
             default:
                 log.severe("No matches in LastSceneController method pathToSoundToPlay()");

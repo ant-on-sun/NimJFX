@@ -12,6 +12,7 @@ import javafx.stage.WindowEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
 import java.nio.file.Path;
@@ -21,6 +22,16 @@ import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 public class Main extends Application {
+
+    static {
+        InputStream stream = Main.class.getClassLoader().
+                getResourceAsStream("logging.properties");
+        try {
+            LogManager.getLogManager().readConfiguration(stream);
+        } catch (IOException e) {
+            System.err.println("Could not set up logger configuration: " + e.toString());
+        }
+    }
 
     private static Stage primaryStage;
     private static Logger log = Logger.getLogger(Main.class.getName());
@@ -32,7 +43,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("../view/appView/FirstScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/FirstScene.fxml"));
         this.primaryStage.setTitle("Nim Game");
         this.primaryStage.setMinHeight(490);
         this.primaryStage.setMinWidth(700);
@@ -40,7 +51,7 @@ public class Main extends Application {
         this.primaryStage.setScene(scene);
         this.primaryStage.setOnCloseRequest(event -> {
             event.consume();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/appView/NoticeExitInTheEnd.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/NoticeExitInTheEnd.fxml"));
             try {
                 Parent rootClose = fxmlLoader.load();
                 Stage stage = new Stage();
@@ -58,15 +69,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-
-        try {
-            String pathToLogging = Main.class.getResource("../../../../logging.properties").toString();
-            pathToLogging = GetOsIndependentPathToFile.getPath(pathToLogging);
-            LogManager.getLogManager().readConfiguration(new FileInputStream(pathToLogging));
-        } catch (IOException e) {
-            System.err.println("Could not set up logger configuration: " + e.toString());
-        }
-
         try {
             launch(args);
         } catch (Exception e) {

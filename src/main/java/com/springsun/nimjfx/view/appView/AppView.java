@@ -70,7 +70,7 @@ public class AppView implements IView {
         this.winner = winner;
         AnchorPane pane = null;
         try {
-            pane = FXMLLoader.load(getClass().getResource("LastScene.fxml"));
+            pane = FXMLLoader.load(getClass().getResource("/fxml/LastScene.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
