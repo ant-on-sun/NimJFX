@@ -24,8 +24,6 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static com.springsun.nimjfx.model.Players.HUMAN;
-
 public class LastSceneController {
     IView v;
     private MediaPlayer mediaPlayer;
@@ -102,15 +100,12 @@ public class LastSceneController {
         switch (winnerEnum){
             case HUMAN:
                 url = LastSceneController.class.getResource("/media/gifs/salut.gif");
-                System.out.println(url.toString());
                 break;
             case COMPUTER:
                 url = LastSceneController.class.getResource("/media/gifs/computer.gif");
-                System.out.println(url.toString());
                 break;
             case MAD_COMPUTER:
                 url = LastSceneController.class.getResource("/media/gifs/madcomp.gif");
-                System.out.println(url.toString());
                 break;
             default:
                 log.severe("No matches in LastSceneController method pathToGifToShow()");
@@ -125,15 +120,12 @@ public class LastSceneController {
         switch (winnerEnum){
             case HUMAN:
                 url = LastSceneController.class.getResource("/media/sounds/fireworks.mp3");
-                System.out.println(url.toString());
                 break;
             case COMPUTER:
                 url = LastSceneController.class.getResource("/media/sounds/computer.mp3");
-                System.out.println(url.toString());
                 break;
             case MAD_COMPUTER:
                 url = LastSceneController.class.getResource("/media/sounds/IrishDance.mp3");
-                System.out.println(url.toString());
                 break;
             default:
                 log.severe("No matches in LastSceneController method pathToSoundToPlay()");

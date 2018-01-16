@@ -1,16 +1,10 @@
 package com.springsun.nimjfx.controller;
 
-import com.springsun.nimjfx.model.Players;
-
 import java.io.*;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.Arrays;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -24,17 +18,8 @@ public class SetTotalScore {
     public static String setScore(String winnerName){
         String pathAsString = null;
         Path path = null;
-        File file = null;
         try {
-            URL url = SetTotalScore.class.getResource("/TotalScore.txt");
-            pathAsString = GetOsIndependentPathToFile.getPath(url.toString());
-            file = new File(pathAsString);
-            if (!file.exists()) {
-                List<String> lines = Arrays.asList(Players.HUMAN.toString() + ": 0", Players.COMPUTER.toString() +
-                        ": 0", Players.MAD_COMPUTER.toString() + ": 0");
-                Files.write(Paths.get(pathAsString), lines, StandardCharsets.UTF_8, StandardOpenOption.CREATE,
-                        StandardOpenOption.APPEND);
-            }
+            pathAsString = CreateScoreFile.getPathAsString();
             path = Paths.get(pathAsString);
         } catch (Exception e) {
             log.log(Level.SEVERE, "Exception caught in SetTotalScore while trying to get path from url: ", e);
@@ -76,8 +61,6 @@ public class SetTotalScore {
         }
         try (BufferedWriter writer = Files.newBufferedWriter(path)){
             writer.write(stringBuilder.toString());
-//            writer.write( Players.HUMAN.toString() + ": 0\n" + Players.COMPUTER.toString() + ": 0\n" +
-//                   Players.MAD_COMPUTER.toString() + ": 0\n");
         } catch (IOException e) {
             log.log(Level.SEVERE, "Exception caught in SetTotalScore at try-with-resources (writing in file): ", e);
         }

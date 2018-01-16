@@ -31,7 +31,7 @@ public class GetOsIndependentPathToFileTest {
 
     @Test (expected = StringIndexOutOfBoundsException.class)
     public void getPathTest3() throws Exception {
-        s = "";
+        s = ":\\Users";
         GetOsIndependentPathToFile.getPath(s);
     }
 

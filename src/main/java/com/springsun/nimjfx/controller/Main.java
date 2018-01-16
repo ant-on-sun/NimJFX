@@ -1,6 +1,7 @@
 package com.springsun.nimjfx.controller;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -35,9 +36,15 @@ public class Main extends Application {
 
     private static Stage primaryStage;
     private static Logger log = Logger.getLogger(Main.class.getName());
+    private Boolean fileScoreExist;
 
     @Override
     public void init(){
+        fileScoreExist = CreateScoreFile.createFile();
+        if (!fileScoreExist){
+            log.log(Level.SEVERE, "Can't create file TotalScore.txt in path " + CreateScoreFile.getPathAsString());
+            Platform.exit();
+        }
     }
 
     @Override
