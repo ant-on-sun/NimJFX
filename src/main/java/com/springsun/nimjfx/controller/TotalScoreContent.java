@@ -15,13 +15,14 @@ public class TotalScoreContent {
 
     public static String getContentAsString() {
         Path path = null;
-        File file = null;
+        //File file = null;
         try {
+            CreateScoreFile.createFile();
             String pathAsString = CreateScoreFile.getPathAsString();
-            file = new File(pathAsString);
-            if (!file.exists()) {
-                CreateScoreFile.createFile();
-            }
+//            file = new File(pathAsString);
+//            if (!file.exists()) {
+//                CreateScoreFile.createFile();
+//            }
             path = Paths.get(pathAsString);
         } catch (Exception e) {
             log.log(Level.SEVERE, "Exception caught in TotalScoreContent while trying to get path from url: ", e);
