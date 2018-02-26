@@ -15,10 +15,11 @@ public class TotalScoreContent {
 
     public static String getContentAsString() {
         Path path = null;
+        String pathAsString = "";
         //File file = null;
         try {
             CreateScoreFile.createFile();
-            String pathAsString = CreateScoreFile.getPathAsString();
+            pathAsString = CreateScoreFile.getPathAsString();
 //            file = new File(pathAsString);
 //            if (!file.exists()) {
 //                CreateScoreFile.createFile();
@@ -26,6 +27,7 @@ public class TotalScoreContent {
             path = Paths.get(pathAsString);
         } catch (Exception e) {
             log.log(Level.SEVERE, "Exception caught in TotalScoreContent while trying to get path from url: ", e);
+            log.log(Level.SEVERE, "pathAsString: ", pathAsString);
         }
         /*Building string from file*/
         StringBuilder stringBuilder = new StringBuilder();
