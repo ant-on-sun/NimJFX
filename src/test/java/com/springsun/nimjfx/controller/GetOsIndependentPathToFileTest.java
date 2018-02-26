@@ -19,20 +19,38 @@ public class GetOsIndependentPathToFileTest {
 
     @Test
     public void getPathTest1() throws Exception {
-        s = "file:/C:\\Users";
-        assertEquals("C:\\Users", GetOsIndependentPathToFile.getPath(s));
+        if (System.getProperty("os.name").contains("indow")){
+            s = "file:/C:\\Users";
+            assertEquals("C:\\Users", GetOsIndependentPathToFile.getPath(s));
+        }
+
     }
 
     @Test
     public void getPathTest2() throws Exception {
-        s = "file:/E:\\Users";
-        assertEquals("E:\\Users", GetOsIndependentPathToFile.getPath(s));
+        if (System.getProperty("os.name").contains("indow")){
+            s = "file:/E:\\Users";
+            assertEquals("E:\\Users", GetOsIndependentPathToFile.getPath(s));
+        }
+
     }
 
     @Test (expected = StringIndexOutOfBoundsException.class)
     public void getPathTest3() throws Exception {
-        s = ":\\Users";
-        GetOsIndependentPathToFile.getPath(s);
+        if (System.getProperty("os.name").contains("indow")){
+            s = ":\\Users";
+            GetOsIndependentPathToFile.getPath(s);
+        }
+
+    }
+
+    @Test
+    public void getPathTest4(){
+        if (!System.getProperty("os.name").contains("indow")){
+            s = "someDirectory/anotherDirectory";
+            String result = GetOsIndependentPathToFile.getPath(s);
+            System.out.println("result = " + result);
+        }
     }
 
 }

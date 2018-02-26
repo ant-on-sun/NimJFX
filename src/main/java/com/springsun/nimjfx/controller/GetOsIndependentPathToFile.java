@@ -7,7 +7,6 @@ public class GetOsIndependentPathToFile {
     private static Logger log = Logger.getLogger(GetOsIndependentPathToFile.class.getName());
 
     public static String getPath (String s) throws StringIndexOutOfBoundsException{
-        String strLetter = "";
         int i;
         if (s.startsWith("file:/")) s = s.substring(6);
         if (System.getProperty("os.name").contains("indow")){
