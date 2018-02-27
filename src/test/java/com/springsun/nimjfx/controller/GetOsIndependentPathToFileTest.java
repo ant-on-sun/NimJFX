@@ -18,6 +18,7 @@ public class GetOsIndependentPathToFileTest {
     public void tearDown() throws Exception {
     }
 
+    //in Windows
     @Test @Ignore
     public void getPathTest1() throws Exception {
         if (System.getProperty("os.name").contains("indow")){
@@ -27,6 +28,7 @@ public class GetOsIndependentPathToFileTest {
 
     }
 
+    //in Windows
     @Test @Ignore
     public void getPathTest2() throws Exception {
         if (System.getProperty("os.name").contains("indow")){
@@ -36,6 +38,7 @@ public class GetOsIndependentPathToFileTest {
 
     }
 
+    //in Windows
     @Test @Ignore //(expected = StringIndexOutOfBoundsException.class)
     public void getPathTest3() throws Exception {
         if (System.getProperty("os.name").contains("indow")){
@@ -45,6 +48,7 @@ public class GetOsIndependentPathToFileTest {
 
     }
 
+    //in Unix
     @Test (expected = StringIndexOutOfBoundsException.class)
     public void getPathTest4(){
         if (!System.getProperty("os.name").contains("indow")){
